@@ -189,17 +189,17 @@ function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="story-link text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </a>
           ))}
         </nav>
         <div className="ml-auto hidden items-center gap-3 md:flex">
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+          <a href="#" className="story-link text-sm text-muted-foreground hover:text-foreground">
             Log in
           </a>
-          <Button size="sm" className="rounded-full shadow-glow" style={{ backgroundImage: "var(--gradient-brand)" }}>
+          <Button size="sm" className="group rounded-full shadow-glow hover-glow animate-gradient-pan" style={{ backgroundImage: "var(--gradient-brand)" }}>
             Get started <ArrowRight className="ml-1 h-3.5 w-3.5" />
           </Button>
         </div>
@@ -270,12 +270,12 @@ function Hero() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="h-12 rounded-full px-6 shadow-glow"
+              className="group h-12 rounded-full px-6 shadow-glow hover-glow animate-gradient-pan"
               style={{ backgroundImage: "var(--gradient-brand)" }}
             >
-              Start free trial <ArrowRight className="ml-2 h-4 w-4" />
+              Start free trial <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button size="lg" variant="ghost" className="h-12 rounded-full px-6">
+            <Button size="lg" variant="ghost" className="group h-12 rounded-full px-6 transition-colors hover:bg-muted">
               <Play className="mr-2 h-4 w-4" />
               Book a demo
             </Button>
@@ -334,7 +334,7 @@ function TrustedBy() {
           {logos.map((l) => (
             <div
               key={l}
-              className="text-center font-display text-lg tracking-[0.3em] text-muted-foreground"
+              className="text-center font-display text-lg tracking-[0.3em] text-muted-foreground opacity-70 transition-all duration-500 hover:opacity-100 hover:tracking-[0.35em] hover:text-foreground"
             >
               {l}
             </div>
@@ -342,8 +342,8 @@ function TrustedBy() {
         </div>
         <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-border/60 sm:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.l} className="bg-background p-6 text-center">
-              <div className="font-display text-3xl sm:text-4xl">
+            <div key={s.l} className="group bg-background p-6 text-center transition-colors hover:bg-muted/40">
+              <div className="font-display text-3xl sm:text-4xl transition-transform duration-500 group-hover:scale-110">
                 <span className="text-brand-gradient">{s.v}</span>
               </div>
               <div className="mt-1 text-xs text-muted-foreground">{s.l}</div>
@@ -389,16 +389,16 @@ function HowItWorks() {
           <ol className="grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7">
             {steps.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.05}>
-                <li className="flex flex-col items-center text-center">
+                <li className="group flex flex-col items-center text-center">
                   <div className="relative">
-                    <div className="grid h-12 w-12 place-items-center rounded-full border bg-background shadow-soft">
-                      <s.icon className="h-5 w-5" style={{ color: "var(--brand)" }} />
+                    <div className="grid h-12 w-12 place-items-center rounded-full border bg-background shadow-soft transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-glow group-hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))]">
+                      <s.icon className="icon-pop h-5 w-5" style={{ color: "var(--brand)" }} />
                     </div>
                     <div className="absolute -bottom-1 -right-1 grid h-5 w-5 place-items-center rounded-full bg-brand-gradient text-[10px] font-semibold text-white">
                       {i + 1}
                     </div>
                   </div>
-                  <div className="mt-3 text-sm font-medium">{s.label}</div>
+                  <div className="mt-3 text-sm font-medium transition-colors group-hover:text-[color:var(--brand)]">{s.label}</div>
                 </li>
               </Reveal>
             ))}
@@ -503,10 +503,10 @@ function Features() {
               ].map((f) => (
                 <div
                   key={f.label}
-                  className="group flex items-center gap-2.5 rounded-xl border bg-background/70 p-3 transition hover:-translate-y-0.5 hover:shadow-soft"
+                  className="group flex items-center gap-2.5 rounded-xl border bg-background/70 p-3 hover-lift"
                 >
-                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-muted transition group-hover:bg-brand/10">
-                    <f.icon className="h-4 w-4" style={{ color: "var(--brand)" }} />
+                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-muted transition-colors duration-300 group-hover:bg-[color-mix(in_oklab,var(--brand)_15%,transparent)]">
+                    <f.icon className="icon-pop h-4 w-4" style={{ color: "var(--brand)" }} />
                   </div>
                   <div className="min-w-0 truncate text-xs font-medium">{f.label}</div>
                 </div>
@@ -534,20 +534,20 @@ function BentoCard({
 }) {
   return (
     <div
-      className={`relative h-full overflow-hidden rounded-2xl border p-6 transition hover:-translate-y-0.5 hover:shadow-soft ${
+      className={`group relative h-full overflow-hidden rounded-2xl border p-6 hover-lift ${
         accent ? "bg-background" : "bg-background"
       }`}
     >
       {accent && (
         <div
-          className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-30 blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
           style={{ background: "var(--gradient-brand)" }}
           aria-hidden
         />
       )}
       <div className="relative">
-        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow">
-          <Icon className="h-5 w-5" />
+        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+          <Icon className="icon-pop h-5 w-5" />
         </div>
         <h3 className="mt-4 font-display text-2xl leading-tight">{title}</h3>
         <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
@@ -843,15 +843,15 @@ function AIWorkflow() {
             />
             <div className="relative flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               {nodes.map((n, i) => (
-                <div key={n.label} className="flex items-center gap-3 sm:gap-4">
+                <div key={n.label} className="group flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl border bg-background shadow-soft">
-                      <n.icon className="h-5 w-5" style={{ color: "var(--brand)" }} />
+                    <div className="grid h-14 w-14 place-items-center rounded-2xl border bg-background shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))]">
+                      <n.icon className="h-5 w-5 transition-transform duration-300 hover:scale-110" style={{ color: "var(--brand)" }} />
                     </div>
                     <div className="text-xs font-medium">{n.label}</div>
                   </div>
                   {i < nodes.length - 1 && (
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground animate-float-slow" />
                   )}
                 </div>
               ))}
@@ -981,9 +981,9 @@ function Benefits() {
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((b) => (
             <Reveal key={b.label}>
-              <div className="h-full rounded-2xl border bg-background p-5 transition hover:-translate-y-0.5 hover:shadow-soft">
-                <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand/10">
-                  <b.icon className="h-5 w-5" style={{ color: "var(--brand)" }} />
+              <div className="group h-full rounded-2xl border bg-background p-5 hover-lift">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-[color-mix(in_oklab,var(--brand)_12%,transparent)] transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-gradient">
+                  <b.icon className="h-5 w-5 transition-colors group-hover:text-white" style={{ color: "var(--brand)" }} />
                 </div>
                 <div className="mt-4 font-display text-xl">{b.label}</div>
                 <div className="mt-1 text-sm text-muted-foreground">{b.desc}</div>
@@ -1031,10 +1031,10 @@ function Testimonials() {
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
           {items.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
-              <figure className="flex h-full flex-col rounded-2xl border bg-background p-6 shadow-soft">
+              <figure className="group flex h-full flex-col rounded-2xl border bg-background p-6 shadow-soft hover-lift">
                 <div className="mb-4 flex gap-0.5" aria-hidden>
                   {[...Array(5)].map((_, k) => (
-                    <Star key={k} className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    <Star key={k} className="h-4 w-4 fill-amber-400 text-amber-400 transition-transform duration-300 group-hover:scale-110" style={{ transitionDelay: `${k * 40}ms` }} />
                   ))}
                 </div>
                 <blockquote className="font-display text-lg leading-snug">
@@ -1136,7 +1136,7 @@ function Pricing() {
           {plans.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.06}>
               <div
-                className={`relative flex h-full flex-col rounded-2xl border p-6 sm:p-8 ${
+                className={`group relative flex h-full flex-col rounded-2xl border p-6 sm:p-8 hover-lift ${
                   p.highlighted
                     ? "bg-background shadow-glow"
                     : "bg-background"
@@ -1182,12 +1182,12 @@ function Pricing() {
                 </ul>
                 <div className="mt-8">
                   <Button
-                    className="w-full rounded-full"
+                    className={`w-full rounded-full transition-all ${p.highlighted ? "hover-glow animate-gradient-pan" : "hover:-translate-y-0.5"}`}
                     variant={p.highlighted ? "default" : "outline"}
                     style={p.highlighted ? { backgroundImage: "var(--gradient-brand)" } : undefined}
                   >
                     {p.cta}
-                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
               </div>
@@ -1282,17 +1282,17 @@ function FinalCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="h-12 rounded-full px-6 text-slate-900"
+              className="group h-12 rounded-full px-6 text-slate-900 transition-transform hover:-translate-y-0.5 hover:shadow-glow"
               style={{ backgroundColor: "white" }}
             >
-              Start free trial <ArrowRight className="ml-2 h-4 w-4" />
+              Start free trial <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
               size="lg"
               variant="ghost"
-              className="h-12 rounded-full border border-white/20 px-6 text-white hover:bg-white/10 hover:text-white"
+              className="group h-12 rounded-full border border-white/20 px-6 text-white transition-all hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:text-white"
             >
-              <Play className="mr-2 h-4 w-4" /> Book a demo
+              <Play className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" /> Book a demo
             </Button>
           </div>
         </Reveal>
@@ -1344,7 +1344,7 @@ function Footer() {
                   key={s}
                   href="#"
                   aria-label={`GuestPulse on ${s}`}
-                  className="grid h-9 w-9 place-items-center rounded-full border text-xs text-muted-foreground hover:bg-muted"
+                  className="grid h-9 w-9 place-items-center rounded-full border text-xs text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))] hover:bg-muted hover:text-foreground"
                 >
                   {s}
                 </a>
@@ -1359,7 +1359,7 @@ function Footer() {
               <ul className="mt-3 space-y-2">
                 {c.links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-sm text-foreground/80 hover:text-foreground">
+                    <a href="#" className="story-link text-sm text-foreground/80 hover:text-foreground">
                       {l}
                     </a>
                   </li>
