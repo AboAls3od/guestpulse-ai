@@ -843,15 +843,15 @@ function AIWorkflow() {
             />
             <div className="relative flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               {nodes.map((n, i) => (
-                <div key={n.label} className="flex items-center gap-3 sm:gap-4">
+                <div key={n.label} className="group flex items-center gap-3 sm:gap-4">
                   <div className="flex flex-col items-center gap-2">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl border bg-background shadow-soft">
-                      <n.icon className="h-5 w-5" style={{ color: "var(--brand)" }} />
+                    <div className="grid h-14 w-14 place-items-center rounded-2xl border bg-background shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-glow hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))]">
+                      <n.icon className="h-5 w-5 transition-transform duration-300 hover:scale-110" style={{ color: "var(--brand)" }} />
                     </div>
                     <div className="text-xs font-medium">{n.label}</div>
                   </div>
                   {i < nodes.length - 1 && (
-                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                    <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground animate-float-slow" />
                   )}
                 </div>
               ))}
