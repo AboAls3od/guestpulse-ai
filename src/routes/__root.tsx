@@ -81,6 +81,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Turn every guest conversation into revenue. GuestPulse AI collects, analyzes, and resolves hotel guest feedback across WhatsApp, email, and web — automatically." },
       { name: "author", content: "GuestPulse AI" },
       { name: "theme-color", content: "#2563EB" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "googlebot", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      // Verification tags — replace the content values with codes from each search console.
+      { name: "google-site-verification", content: "REPLACE_WITH_GOOGLE_VERIFICATION_CODE" },
+      { name: "msvalidate.01", content: "REPLACE_WITH_BING_VERIFICATION_CODE" },
+      { name: "yandex-verification", content: "REPLACE_WITH_YANDEX_VERIFICATION_CODE" },
       { property: "og:site_name", content: "GuestPulse AI" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
