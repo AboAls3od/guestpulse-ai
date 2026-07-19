@@ -54,9 +54,14 @@ import {
   FloatingCards,
   AnalyticsPanel,
 } from "@/components/landing/mockups";
+import { getRequestOrigin } from "@/lib/origin.functions";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
+  loader: async () => ({ origin: await getRequestOrigin() }),
+  head: ({ loaderData }) => {
+    const origin = loaderData?.origin ?? "";
+    const ogImage = `${origin}/og-image.jpg`;
+    return {
     meta: [
       { title: "GuestPulse AI — AI Guest Feedback for Modern Hotels" },
       {
@@ -75,6 +80,13 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/" },
+      { property: "og:image", content: ogImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "GuestPulse AI — AI-powered hotel guest feedback dashboard" },
+      { name: "twitter:image", content: ogImage },
+      { name: "twitter:title", content: "GuestPulse AI — AI Guest Feedback for Modern Hotels" },
+      { name: "twitter:description", content: "Collect feedback across channels, get AI insights, resolve issues before checkout." },
     ],
     links: [{ rel: "canonical", href: "/" }],
     scripts: [
@@ -96,7 +108,8 @@ export const Route = createFileRoute("/")({
         }),
       },
     ],
-  }),
+    };
+  },
   component: LandingPage,
 });
 
