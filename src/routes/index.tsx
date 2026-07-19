@@ -189,17 +189,17 @@ function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+              className="story-link text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {l.label}
             </a>
           ))}
         </nav>
         <div className="ml-auto hidden items-center gap-3 md:flex">
-          <a href="#" className="text-sm text-muted-foreground hover:text-foreground">
+          <a href="#" className="story-link text-sm text-muted-foreground hover:text-foreground">
             Log in
           </a>
-          <Button size="sm" className="rounded-full shadow-glow" style={{ backgroundImage: "var(--gradient-brand)" }}>
+          <Button size="sm" className="group rounded-full shadow-glow hover-glow animate-gradient-pan" style={{ backgroundImage: "var(--gradient-brand)" }}>
             Get started <ArrowRight className="ml-1 h-3.5 w-3.5" />
           </Button>
         </div>
@@ -270,12 +270,12 @@ function Hero() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="h-12 rounded-full px-6 shadow-glow"
+              className="group h-12 rounded-full px-6 shadow-glow hover-glow animate-gradient-pan"
               style={{ backgroundImage: "var(--gradient-brand)" }}
             >
-              Start free trial <ArrowRight className="ml-2 h-4 w-4" />
+              Start free trial <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button size="lg" variant="ghost" className="h-12 rounded-full px-6">
+            <Button size="lg" variant="ghost" className="group h-12 rounded-full px-6 transition-colors hover:bg-muted">
               <Play className="mr-2 h-4 w-4" />
               Book a demo
             </Button>
@@ -334,7 +334,7 @@ function TrustedBy() {
           {logos.map((l) => (
             <div
               key={l}
-              className="text-center font-display text-lg tracking-[0.3em] text-muted-foreground"
+              className="text-center font-display text-lg tracking-[0.3em] text-muted-foreground opacity-70 transition-all duration-500 hover:opacity-100 hover:tracking-[0.35em] hover:text-foreground"
             >
               {l}
             </div>
@@ -342,8 +342,8 @@ function TrustedBy() {
         </div>
         <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border bg-border/60 sm:grid-cols-4">
           {stats.map((s) => (
-            <div key={s.l} className="bg-background p-6 text-center">
-              <div className="font-display text-3xl sm:text-4xl">
+            <div key={s.l} className="group bg-background p-6 text-center transition-colors hover:bg-muted/40">
+              <div className="font-display text-3xl sm:text-4xl transition-transform duration-500 group-hover:scale-110">
                 <span className="text-brand-gradient">{s.v}</span>
               </div>
               <div className="mt-1 text-xs text-muted-foreground">{s.l}</div>
