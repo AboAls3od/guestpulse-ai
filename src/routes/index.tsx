@@ -1344,7 +1344,7 @@ function Footer() {
                   key={s}
                   href="#"
                   aria-label={`GuestPulse on ${s}`}
-                  className="grid h-9 w-9 place-items-center rounded-full border text-xs text-muted-foreground hover:bg-muted"
+                  className="grid h-9 w-9 place-items-center rounded-full border text-xs text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))] hover:bg-muted hover:text-foreground"
                 >
                   {s}
                 </a>
@@ -1359,7 +1359,7 @@ function Footer() {
               <ul className="mt-3 space-y-2">
                 {c.links.map((l) => (
                   <li key={l}>
-                    <a href="#" className="text-sm text-foreground/80 hover:text-foreground">
+                    <a href="#" className="story-link text-sm text-foreground/80 hover:text-foreground">
                       {l}
                     </a>
                   </li>
