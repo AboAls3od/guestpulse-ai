@@ -389,16 +389,16 @@ function HowItWorks() {
           <ol className="grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7">
             {steps.map((s, i) => (
               <Reveal key={s.label} delay={i * 0.05}>
-                <li className="flex flex-col items-center text-center">
+                <li className="group flex flex-col items-center text-center">
                   <div className="relative">
-                    <div className="grid h-12 w-12 place-items-center rounded-full border bg-background shadow-soft">
-                      <s.icon className="h-5 w-5" style={{ color: "var(--brand)" }} />
+                    <div className="grid h-12 w-12 place-items-center rounded-full border bg-background shadow-soft transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-glow group-hover:border-[color-mix(in_oklab,var(--brand)_50%,var(--border))]">
+                      <s.icon className="icon-pop h-5 w-5" style={{ color: "var(--brand)" }} />
                     </div>
                     <div className="absolute -bottom-1 -right-1 grid h-5 w-5 place-items-center rounded-full bg-brand-gradient text-[10px] font-semibold text-white">
                       {i + 1}
                     </div>
                   </div>
-                  <div className="mt-3 text-sm font-medium">{s.label}</div>
+                  <div className="mt-3 text-sm font-medium transition-colors group-hover:text-[color:var(--brand)]">{s.label}</div>
                 </li>
               </Reveal>
             ))}
