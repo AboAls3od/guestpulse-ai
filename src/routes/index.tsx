@@ -503,10 +503,10 @@ function Features() {
               ].map((f) => (
                 <div
                   key={f.label}
-                  className="group flex items-center gap-2.5 rounded-xl border bg-background/70 p-3 transition hover:-translate-y-0.5 hover:shadow-soft"
+                  className="group flex items-center gap-2.5 rounded-xl border bg-background/70 p-3 hover-lift"
                 >
-                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-muted transition group-hover:bg-brand/10">
-                    <f.icon className="h-4 w-4" style={{ color: "var(--brand)" }} />
+                  <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-muted transition-colors duration-300 group-hover:bg-[color-mix(in_oklab,var(--brand)_15%,transparent)]">
+                    <f.icon className="icon-pop h-4 w-4" style={{ color: "var(--brand)" }} />
                   </div>
                   <div className="min-w-0 truncate text-xs font-medium">{f.label}</div>
                 </div>
@@ -534,20 +534,20 @@ function BentoCard({
 }) {
   return (
     <div
-      className={`relative h-full overflow-hidden rounded-2xl border p-6 transition hover:-translate-y-0.5 hover:shadow-soft ${
+      className={`group relative h-full overflow-hidden rounded-2xl border p-6 hover-lift ${
         accent ? "bg-background" : "bg-background"
       }`}
     >
       {accent && (
         <div
-          className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-30 blur-3xl"
+          className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-60"
           style={{ background: "var(--gradient-brand)" }}
           aria-hidden
         />
       )}
       <div className="relative">
-        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow">
-          <Icon className="h-5 w-5" />
+        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-gradient text-white shadow-glow transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110">
+          <Icon className="icon-pop h-5 w-5" />
         </div>
         <h3 className="mt-4 font-display text-2xl leading-tight">{title}</h3>
         <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
