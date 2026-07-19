@@ -1136,7 +1136,7 @@ function Pricing() {
           {plans.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.06}>
               <div
-                className={`relative flex h-full flex-col rounded-2xl border p-6 sm:p-8 ${
+                className={`group relative flex h-full flex-col rounded-2xl border p-6 sm:p-8 hover-lift ${
                   p.highlighted
                     ? "bg-background shadow-glow"
                     : "bg-background"
@@ -1182,12 +1182,12 @@ function Pricing() {
                 </ul>
                 <div className="mt-8">
                   <Button
-                    className="w-full rounded-full"
+                    className={`w-full rounded-full transition-all ${p.highlighted ? "hover-glow animate-gradient-pan" : "hover:-translate-y-0.5"}`}
                     variant={p.highlighted ? "default" : "outline"}
                     style={p.highlighted ? { backgroundImage: "var(--gradient-brand)" } : undefined}
                   >
                     {p.cta}
-                    <ArrowRight className="ml-1.5 h-4 w-4" />
+                    <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
               </div>
