@@ -1282,17 +1282,17 @@ function FinalCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button
               size="lg"
-              className="h-12 rounded-full px-6 text-slate-900"
+              className="group h-12 rounded-full px-6 text-slate-900 transition-transform hover:-translate-y-0.5 hover:shadow-glow"
               style={{ backgroundColor: "white" }}
             >
-              Start free trial <ArrowRight className="ml-2 h-4 w-4" />
+              Start free trial <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button
               size="lg"
               variant="ghost"
-              className="h-12 rounded-full border border-white/20 px-6 text-white hover:bg-white/10 hover:text-white"
+              className="group h-12 rounded-full border border-white/20 px-6 text-white transition-all hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/10 hover:text-white"
             >
-              <Play className="mr-2 h-4 w-4" /> Book a demo
+              <Play className="mr-2 h-4 w-4 transition-transform group-hover:scale-110" /> Book a demo
             </Button>
           </div>
         </Reveal>
